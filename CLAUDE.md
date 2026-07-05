@@ -8,11 +8,24 @@ GitHub: xbtlin/ai-berkshire
 ## 项目结构
 
 ```
-skills/          — 投研 Skill 定义（.md），复制到 ~/.claude/commands/ 使用
+skills/          — 投研 Skill 定义（.md），按需复制到 ~/.claude/commands/ 使用（见下方"Skill 安装"）
 tools/           — 辅助工具（financial_rigor.py 精确计算）
 reports/         — 投资研究报告输出
 assets/          — 图片等静态资源
 ```
+
+## Skill 安装（按需，不自动装）
+
+`skills/*.md` **不要**在 session 启动时自动复制安装——避免每次开新对话都装一遍造成不必要的开销。
+
+改为按需安装：当用户在对话中提出投研类需求（分析某公司、财报点评、行业研究等，对应 `skills/` 目录下任一 skill）且 `~/.claude/commands/` 里还没有对应的 skill 文件时，先执行：
+
+```bash
+mkdir -p ~/.claude/commands
+cp skills/*.md ~/.claude/commands/
+```
+
+装好后再继续执行用户请求的 skill。如果 `~/.claude/commands/` 里已经有对应文件，直接用，不用重复复制。
 
 ## 报告目录结构
 
